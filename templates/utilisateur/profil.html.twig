@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block body %}
+<div>
+    <img src="img/profil/{{ app.user.photo }}" alt="photo de profil">
+</div>
+
+<form>
+    <h1>Mon profil</h1>
+    <ul>
+        <li>
+            <label for="pseudo">Pseudo : </label>
+            <input type="text" value="{{ app.user.pseudo }}" name="pseudo" id="pseudo">
+        </li>
+        <li>
+            <label for="prenom">Prénom : </label>
+            <input type="text" value="{{ app.user.prenom }}" name="prenom" id="prenom">
+        </li>
+        <li>
+            <label for="nom">Nom : </label>
+            <input type="text" value="{{ app.user.nom }}" name="nom" id="nom">
+        </li>
+        <li>
+            <label for="telephone">Téléphone : </label>
+            <input type="text" value="{{ app.user.telephone }}" name="telephone" id="telephone">
+        </li>
+        <li>
+            <label for="email">Email : </label>
+            <input type="email" value="{{ app.user.email }}" name="email" id="email">
+        </li>
+        <li>
+            <label for="mdp">Mot de Passe : </label>
+            <input type="text" value="{{ app.user.password }}" name="mdp" id="mdp">
+        </li>
+        <li>
+            <label for="mdpconf">Confirmation : </label>
+            <input type="text" value="{{ app.user.password }}" name="mdpconf" id="mdpconf">
+        </li>
+        <li>
+            <label for="campus">Campus : </label>
+            <select id="campus" name="campus">
+                <option value="NIORT">NIORT</option>
+                <option value="RENNES">RENNES</option>
+                <option value="SAINT HERBLAIN">SAINT HERBLAIN</option>
+            </select>
+        </li>
+        <li>
+            <label for="photo">Ma photo : </label>
+            <input type="text" value="{{ app.user.photo }}" name="photo" id="photo">
+        </li>
+    </ul>
+</form>
+<div class="example-wrapper">
+
+
+
+    This friendly message is coming from:
+
+</div>
+{% endblock %}

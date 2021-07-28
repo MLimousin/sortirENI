@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
@@ -17,9 +17,11 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="">Accueil</a></li>
-                    <li><a href="">Mon profil</a></li>
-                    <li><a href="">Se déconnecter</a></li>
+                    {% if app.user %}
+                        <li><a href="">Accueil</a></li>
+                        <li><a href="{{ path('utilisateur_profil') }}">Mon profil</a></li>
+                        <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </header>

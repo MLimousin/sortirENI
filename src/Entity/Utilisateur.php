@@ -4,11 +4,16 @@ namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
+ * @UniqueEntity("pseudo")
+ * @method string getUserIdentifier()
  */
-class Utilisateur
+class Utilisateur implements PasswordAuthenticatedUserInterface, UserInterface
 {
     /**
      * @ORM\Id
@@ -18,7 +23,7 @@ class Utilisateur
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(unique="true", type="string", length=50)
      */
     private $pseudo;
 
@@ -40,17 +45,23 @@ class Utilisateur
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $mail;
+    private $email;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
-    private $motPasse;
+    private $password;
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $administrateur;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
     /**
      * @ORM\Column(type="boolean")
@@ -120,18 +131,18 @@ class Utilisateur
         return $this;
     }
 
-    public function getMail(): ?string
+    public function getEmail(): ?string
     {
-        return $this->mail;
+        return $this->email;
     }
 
-    public function setMail(string $mail): self
+    public function setEmail(string $email): self
     {
-        $this->mail = $mail;
+        $this->email = $email;
 
         return $this;
     }
-
+/*
     public function getMotPasse(): ?string
     {
         return $this->motPasse;
@@ -143,15 +154,34 @@ class Utilisateur
 
         return $this;
     }
-
-    public function getAdministrateur(): ?string
+*/
+    public function getAdministrateur(): ?bool
     {
         return $this->administrateur;
     }
 
-    public function setAdministrateur(string $administrateur): self
+    public function setAdministrateur(bool $administrateur): self
     {
         $this->administrateur = $administrateur;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }
@@ -190,5 +220,40 @@ class Utilisateur
         $this->photo = $photo;
 
         return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function getSalt()
+    {
+        return null;
+    }
+
+    public function eraseCredentials()
+    {
+        // Implement eraseCredentials() method.
+        return null;
+    }
+
+    public function getUsername()
+    {
+        return $this->pseudo;
+    }
+
+    public function __call(string $name, array $arguments)
+    {
+        // TODO: Implement @method string getUserIdentifier()
     }
 }
