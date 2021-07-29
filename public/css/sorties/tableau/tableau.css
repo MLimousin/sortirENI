@@ -1,0 +1,36 @@
+.table-space {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #5eb5e0;
+}
+
+.table-box {
+    width: 800px;
+    height: 200px;
+    overflow-y: scroll;
+    background: azure;
+    box-shadow: 0 10px 100px rgba(0,0,0,0.5);
+}
+
+table {
+    width: 100%;
+}
+
+table, th, td {
+    padding: 10px;
+    border: 1px solid #AAAAAA;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background: rgba(82,117,139,0.76);
+    color: whitesmoke;
+    box-sizing: border-box;
+}
