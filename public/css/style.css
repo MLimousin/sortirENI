@@ -53,6 +53,19 @@ nav ul li a:hover{
 
 
 /**********/
+/*  BODY  */
+/**********/
+fieldset{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 30%;
+    padding: 3%
+}
+
+
+
+/**********/
 /* FOOTER */
 /**********/
 footer{
