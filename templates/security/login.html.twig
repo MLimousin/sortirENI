@@ -16,11 +16,11 @@
 
     <h1>Se Connecter</h1>
     <fieldset>
-        <div>
+        <div class="fieldset-champ">
             <label for="inputPseudo">Pseudo : </label>
             <input type="text"  name="pseudo" id="inputPseudo" class="form-control" autocomplete="pseudo" required autofocus>
         </div>
-        <div>
+        <div class="fieldset-champ">
             <label for="inputPassword">Mot de Passe : </label>
             <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
         </div>
@@ -30,15 +30,16 @@
             Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
             See https://symfony.com/doc/current/security/remember_me.html
             #}
-            <div class="checkbox mb-3">
+            <div>
                 <label>
-                    <input type="checkbox" name="_remember_me"> Remember me
+                    <input type="checkbox" name="_remember_me"> Se souvenir de moi
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary" type="submit">
-                Connexion
-            </button>
-            <a href="{{ path('app_register') }}">Créer un profil</a>
+            <div class="fieldset-champ">
+                <button type="submit"> Connexion </button>
+                <a href="{{ path('app_register') }}">Créer un profil</a>
+            </div>
+
         </div>
 
     </fieldset>
@@ -47,9 +48,6 @@
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
-
-
-
 
 </form>
 {% endblock %}

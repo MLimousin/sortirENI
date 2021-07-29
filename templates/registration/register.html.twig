@@ -3,12 +3,55 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <h1>Créer un compte</h1>
+    <fieldset>
+        {#<div class="fieldset-champ">
+            {{ form_start(registrationForm) }}
+            {{ form_widget(registrationForm) }}
+            <button type="submit">Créer mon compte</button>
+            <a href="{{ path('app_login') }}">Retour</a>
+            {{ form_end(registrationForm) }}
+        </div>#}
+                <div class="fieldset-champ">
+                    <label for="pseudo">Pseudo : </label>
+                    <input type="text" name="pseudo" id="pseudo">
+                </div>
+                <div class="fieldset-champ">
+                    <label for="prenom">Prénom : </label>
+                    <input type="text" name="prenom" id="prenom">
+                </div>
+                <div class="fieldset-champ">
+                    <label for="nom">Nom : </label>
+                    <input type="text" name="nom" id="nom">
+                </div>
+                <div class="fieldset-champ">
+                    <label for="telephone">Téléphone : </label>
+                    <input type="text" name="telephone" id="telephone">
+                </div>
+                <div class="fieldset-champ">
+                    <label for="email">Email : </label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="fieldset-champ">
+                    <label for="mdp">Mot de Passe : </label>
+                    <input type="text" name="mdp" id="mdp">
+                </div>
 
-    {{ form_start(registrationForm) }}
-    {{ form_widget(registrationForm) }}
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
-
-
+                <div class="fieldset-champ">
+                    <label for="campus">Campus : </label>
+                    <select id="campus" name="campus">
+                        <option value="NIORT">NIORT</option>
+                        <option value="RENNES">RENNES</option>
+                        <option value="SAINT HERBLAIN">SAINT HERBLAIN</option>
+                    </select>
+                </div>
+                <div class="fieldset-champ">
+                    <label for="photo">Ma photo : </label>
+                    <input type="text" name="photo" id="photo">
+                </div>
+                <div class="fieldset-champ">
+                    <button type="submit">Créer mon compte</button>
+                    <a href="{{ path('app_login') }}">Retour</a>
+                </div>
+    </fieldset>
 {% endblock %}

@@ -3,12 +3,12 @@
 {% block title %}Mon profil{% endblock %}
 
 {% block body %}
-<div>
-    <img src="img/profil/{{ app.user.photo }}" alt="photo de profil">
-</div>
+<h1>Mon profil</h1>
 
-<form>
-    <h1>Mon profil</h1>
+<form class="form-profil">
+    <div>
+        <img src="img/profil/{{ app.user.photo }}" alt="photo de profil">
+    </div>
     <ul>
         <li>
             <label for="pseudo">Pseudo : </label>
@@ -50,13 +50,11 @@
             <label for="photo">Ma photo : </label>
             <input type="text" value="{{ app.user.photo }}" name="photo" id="photo">
         </li>
+        <li>
+            <button type="submit">Enregistrer</button>
+            <a href="">Retour à l'accueil</a>
+        </li>
     </ul>
+
 </form>
-<div class="example-wrapper">
-
-
-
-    This friendly message is coming from:
-
-</div>
 {% endblock %}

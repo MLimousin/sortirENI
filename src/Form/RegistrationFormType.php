@@ -49,7 +49,7 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-                'label' => 'Mot de Passe'
+                'label' => 'Mot de Passe :'
             ])
             ->add('campus', ChoiceType::class, [
                 'label' => 'Campus : ',

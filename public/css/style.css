@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-main{
+body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -55,15 +55,100 @@ nav ul li a:hover{
 /**********/
 /*  BODY  */
 /**********/
-fieldset{
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    width: 30%;
-    padding: 3%
+.flash-error{
+    margin-top: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 3%;
+    border: solid 2px rgb(255,0,0) ;
+    background-color: rgb(243,123,117);
+    color: white;
+    font-style: italic;
+}
+main{
+    height: 100vh;
+    min-height: 500px;
+    position: relative;
+}
+main h1{
+    margin-top: 3%;
+    margin-left: 3%;
+}
+button[type=submit]{
+    margin-top: 5%;
+    padding: 1%;
+    background-color: rgb(99,195,167);
+    border-radius: 8%;
+    border: solid 1px;
+}
+button[type=submit]:hover{
+    background-color: rgb(254,195,101);
+    cursor: pointer;
 }
 
+fieldset{
+    display: block;
+    position: absolute;
+    width: 30%;
+    top: 30%;
+    transform: translateY(50%);
+    transform: translateX(100%);
+    padding: 3%
+}
+.fieldset-champ{
+    display: flex;
+}
+.fieldset-champ label{
+    width: 50%;
+    margin-bottom: 3%;
+}
+.fieldset-champ input,select{
+    margin-bottom: 3%;
+}
+.fieldset-champ a{
+    margin-left: 3%;
+    margin-top: 6%;
+    color: black;
+    text-decoration: none;
+}
+.fieldset-champ a:hover{
+    text-decoration: underline;
+}
 
+.form-profil{
+    display: flex;
+    justify-content: center;
+    padding: 3%;
+}
+.form-profil img{
+    width: 150px;
+}
+.form-profil ul{
+    width: 60%;
+}
+.form-profil ul li{
+    display: flex;
+    width: 80%;
+    list-style: none;
+    margin-left: 5%;
+}
+.form-profil ul li label{
+    width: 30%;
+    margin-bottom: 3%;
+}
+.form-profil ul li input,select{
+    width: 60%;
+    margin-bottom: 3%;
+}
+.form-profil ul li a{
+    margin-left: 3%;
+    margin-top: 6%;
+    color: black;
+    text-decoration: none;
+}
+.form-profil ul li a:hover{
+    text-decoration: underline;
+}
 
 /**********/
 /* FOOTER */

@@ -9,7 +9,7 @@
 
         <title>{% block title %}Bienvenue sur SortirENI.com{% endblock %}</title>
     </head>
-    <main>
+    <body>
         <header>
             <div class="app-titre">
                 <img src="{{ asset('img/images/SortirLogo.png') }}" alt="logoSortirEni">
@@ -25,12 +25,21 @@
                 </ul>
             </nav>
         </header>
-        <body>
+        <main>
+        {# read and display all flash messages #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
         {% block body %}{% endblock %}
-        </body>
+        </main>
         <footer>
             <div>&copy;SortirENI.com - {{ "now"|date('Y') }} - Groupe : Marie / Nordine / Yannick</div>
         </footer>
-    </main>
+    </body>
 
 </html>
