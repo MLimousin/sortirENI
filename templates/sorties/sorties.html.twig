@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/sorties/tableau/tableau.css') }}">{% endblock %}
+
+{% block title %}Sorties{% endblock %}
+
+{% block body%}
+    {# Créer le titre de la page #}
+    <h1>Coucou!</h1>
+
+    {# Créer le tableau #}
+    <div class="table-space">
+
+        <div class="table-box">
+
+            <table class="tableau-style">
+
+                <thead>
+
+                <tr>
+                    <th class="col">Nom de la sortie</th>
+                    <th class="col">Date de la sortie</th>
+                    <th class="col">Clôture</th>
+                    <th class="col">Inscrits / Places</th>
+                    <th class="col">Etat</th>
+                    <th class="col">Inscrit</th>
+                    <th class="col">Organisateur</th>
+                    <th class="col">Action</th>
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                <tr>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                </tr>
+
+                <tr>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                </tr>
+
+                <tr>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                </tr>
+
+                <tr>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                </tr>
+
+                <tr>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                </tr>
+
+                <tr>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                </tr>
+
+                <tr>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                </tr>
+
+                <tr>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                </tr>
+
+                <tr>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                </tr>
+
+                <tr>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                    <td class="col">Contenu</td>
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+
+    {% set colors = ["orange", "yellow", "red", "blue", "turquoise"] %}
+    {% for color in colors %}
+        <div style = "background-color: {{ color }}">{{ color }}</div>
+    {% endfor %}
+
+{% endblock %}
