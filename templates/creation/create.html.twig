@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Sorties{% endblock %}
+
+{% block body%}
+    {# Créer le titre de la page #}
+    <h1>Nouvelle Sortie</h1>
+
+    {# Créer le tableau #}
+    <div>
+        {{ form_start(creationSortieForm) }}
+
+
+        {{ form_widget(creationSortieForm) }}
+
+        <button>Enregistrer</button>
+        <button>Publier la sortie</button>
+        <button>Annuler</button>
+
+        {{ form_end(creationSortieForm) }}
+
+
+    </div>
+
+
+{% endblock %}
