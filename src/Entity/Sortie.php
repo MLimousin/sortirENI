@@ -50,11 +50,6 @@ class Sortie
     private $infosSortie;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $etat;
-
-    /**
      * @ORM\OneToMany(targetEntity=Etat::class, mappedBy="sortie")
      */
     private $Etat;

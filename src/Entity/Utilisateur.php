@@ -8,11 +8,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
- * @Vich\Uploadable
  * @UniqueEntity("pseudo")
  * @method string getUserIdentifier()
  */
@@ -82,11 +80,7 @@ class Utilisateur implements PasswordAuthenticatedUserInterface, UserInterface
      */
      private $photo;
 
-     /*
-    /**
-     * @Vich\UploadableField(mapping="photo_profil", fileNameProperty="photo")
-     * @var File
-     */
+
     /*
     private $photoFile;
     */
