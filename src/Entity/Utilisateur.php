@@ -3,7 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -69,10 +72,6 @@ class Utilisateur implements PasswordAuthenticatedUserInterface, UserInterface
      */
     private $actif;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $campus;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -85,6 +84,28 @@ class Utilisateur implements PasswordAuthenticatedUserInterface, UserInterface
     private $photoFile;
     */
     private \DateTime $dateCreated;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="utilisateurs")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $campus;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="organisateur", orphanRemoval=true)
+     */
+    private $sortiesOrganisees;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Sortie::class, mappedBy="participants")
+     */
+    private $sortiesInscrit;
+
+    public function __construct()
+    {
+        $this->sortiesOrganisees = new ArrayCollection();
+        $this->sortiesInscrit = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -195,12 +216,12 @@ class Utilisateur implements PasswordAuthenticatedUserInterface, UserInterface
         return $this;
     }
 
-    public function getCampus(): ?string
+    public function getCampus(): ?Campus
     {
         return $this->campus;
     }
 
-    public function setCampus(string $campus): self
+    public function setCampus(Campus $campus): self
     {
         $this->campus = $campus;
 
@@ -267,5 +288,62 @@ class Utilisateur implements PasswordAuthenticatedUserInterface, UserInterface
     public function __call(string $name, array $arguments)
     {
         // TODO: Implement @method string getUserIdentifier()
+    }
+
+    /**
+     * @return Collection|Sortie[]
+     */
+    public function getSortiesOrganisees(): Collection
+    {
+        return $this->sortiesOrganisees;
+    }
+
+    public function addSortiesOrganisee(Sortie $sortiesOrganisee): self
+    {
+        if (!$this->sortiesOrganisees->contains($sortiesOrganisee)) {
+            $this->sortiesOrganisees[] = $sortiesOrganisee;
+            $sortiesOrganisee->setOrganisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSortiesOrganisee(Sortie $sortiesOrganisee): self
+    {
+        if ($this->sortiesOrganisees->removeElement($sortiesOrganisee)) {
+            // set the owning side to null (unless already changed)
+            if ($sortiesOrganisee->getOrganisateur() === $this) {
+                $sortiesOrganisee->setOrganisateur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Sortie[]
+     */
+    public function getSortiesInscrit(): Collection
+    {
+        return $this->sortiesInscrit;
+    }
+
+    public function addSortiesInscrit(Sortie $sortiesInscrit): self
+    {
+        if (!$this->sortiesInscrit->contains($sortiesInscrit)) {
+            $this->sortiesInscrit[] = $sortiesInscrit;
+            $sortiesInscrit->addParticipant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSortiesInscrit(Sortie $sortiesInscrit): self
+    {
+        if ($this->sortiesInscrit->removeElement($sortiesInscrit)) {
+            $sortiesInscrit->removeParticipant($this);
+        }
+
+        return $this;
     }
 }

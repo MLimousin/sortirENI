@@ -41,9 +41,9 @@
         <li>
             <label for="campus">Campus : </label>
             <select id="campus" name="campus">
-                <option value="NIORT" {% if(app.user.campus == 'NIORT') %} selected {% endif %}>NIORT</option>
-                <option value="RENNES" {% if(app.user.campus == 'RENNES') %} selected {% endif %}>RENNES</option>
-                <option value="SAINT HERBLAIN" {% if(app.user.campus == 'SAINT HERBLAIN') %} selected {% endif %}>SAINT HERBLAIN</option>
+                <option value="NIORT" {% if(app.user.campus.name == 'NIORT') %} selected {% endif %}>NIORT</option>
+                <option value="RENNES" {% if(app.user.campus.name == 'RENNES') %} selected {% endif %}>RENNES</option>
+                <option value="SAINT-HERBLAIN" {% if(app.user.campus.name == 'SAINT-HERBLAIN') %} selected {% endif %}>SAINT-HERBLAIN</option>
             </select>
         </li>
         <li>

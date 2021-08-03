@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Campus;
 use App\Entity\Utilisateur;
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -52,7 +53,12 @@ class UtilisateurController extends AbstractController
                         if($request->request->get('photo') != null){
                             $profil->setPhoto($request->request->get('photo'));
                         }
-                        $profil->setCampus($request->request->get('campus'));
+
+                        $repository = $this->getDoctrine()->getRepository(Campus::class);
+                        $campus = $repository->findOneBy(['name'=>$request->request->get('campus')]);
+                        if($campus){
+                           $profil->setCampus($campus);
+                        }
 
                         $entityManager->persist($profil);
                         $entityManager->flush();
