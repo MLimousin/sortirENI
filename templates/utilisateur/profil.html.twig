@@ -5,7 +5,7 @@
 {% block body %}
 <h1>Mon profil</h1>
 
-<form class="form-profil">
+<form class="form-profil" method="post">
     <div>
         <img src="img/profil/{{ app.user.photo }}" alt="photo de profil">
     </div>
@@ -32,27 +32,27 @@
         </li>
         <li>
             <label for="mdp">Mot de Passe : </label>
-            <input type="text" value="{{ app.user.password }}" name="mdp" id="mdp">
+            <input type="password" name="mdp" id="mdp">
         </li>
         <li>
             <label for="mdpconf">Confirmation : </label>
-            <input type="text" value="{{ app.user.password }}" name="mdpconf" id="mdpconf">
+            <input type="password" name="mdpconf" id="mdpconf">
         </li>
         <li>
             <label for="campus">Campus : </label>
             <select id="campus" name="campus">
-                <option value="NIORT">NIORT</option>
-                <option value="RENNES">RENNES</option>
-                <option value="SAINT HERBLAIN">SAINT HERBLAIN</option>
+                <option value="NIORT" {% if(app.user.campus == 'NIORT') %} selected {% endif %}>NIORT</option>
+                <option value="RENNES" {% if(app.user.campus == 'RENNES') %} selected {% endif %}>RENNES</option>
+                <option value="SAINT HERBLAIN" {% if(app.user.campus == 'SAINT HERBLAIN') %} selected {% endif %}>SAINT HERBLAIN</option>
             </select>
         </li>
         <li>
             <label for="photo">Ma photo : </label>
-            <input type="text" value="{{ app.user.photo }}" name="photo" id="photo">
+            <input type="file" name="photo" id="photo" value="{{ app.user.photo }}">
         </li>
         <li>
-            <button type="submit">Enregistrer</button>
-            <a href="">Retour à l'accueil</a>
+            <button type="submit" name="enregistrer">Enregistrer</button>
+            <a href="{{ path('app_Sorties') }}">Retour à l'accueil</a>
         </li>
     </ul>
 

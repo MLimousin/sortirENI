@@ -5,13 +5,46 @@
 {% block body %}
     <h1>Créer un compte</h1>
     <fieldset>
-        {#<div class="fieldset-champ">
-            {{ form_start(registrationForm) }}
-            {{ form_widget(registrationForm) }}
+        {{ form_start(registrationForm) }}
+        <div class="fieldset-champ">
+            {{ form_label(registrationForm.pseudo) }}
+            {{ form_widget(registrationForm.pseudo) }}
+        </div>
+        <div class="fieldset-champ">
+            {{ form_label(registrationForm.prenom) }}
+            {{ form_widget(registrationForm.prenom) }}
+        </div>
+        <div class="fieldset-champ">
+            {{ form_label(registrationForm.nom) }}
+            {{ form_widget(registrationForm.nom) }}
+        </div>
+        <div class="fieldset-champ">
+            {{ form_label(registrationForm.telephone) }}
+            {{ form_widget(registrationForm.telephone) }}
+        </div>
+        <div class="fieldset-champ">
+            {{ form_label(registrationForm.email) }}
+            {{ form_widget(registrationForm.email) }}
+        </div>
+        <div class="fieldset-champ">
+            {{ form_label(registrationForm.plainPassword) }}
+            {{ form_widget(registrationForm.plainPassword) }}
+        </div>
+        <div class="fieldset-champ">
+            {{ form_label(registrationForm.campus) }}
+            {{ form_widget(registrationForm.campus) }}
+        </div>
+        <div class="fieldset-champ">
+            {{ form_label(registrationForm.photoFile) }}
+            {{ form_widget(registrationForm.photoFile) }}
+        </div>
+        <div class="fieldset-champ">
             <button type="submit">Créer mon compte</button>
             <a href="{{ path('app_login') }}">Retour</a>
-            {{ form_end(registrationForm) }}
-        </div>#}
+        </div>
+        {{ form_end(registrationForm) }}
+
+        {#
                 <div class="fieldset-champ">
                     <label for="pseudo">Pseudo : </label>
                     <input type="text" name="pseudo" id="pseudo">
@@ -53,5 +86,6 @@
                     <button type="submit">Créer mon compte</button>
                     <a href="{{ path('app_login') }}">Retour</a>
                 </div>
+        #}
     </fieldset>
 {% endblock %}

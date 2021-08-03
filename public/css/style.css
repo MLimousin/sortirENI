@@ -65,6 +65,16 @@ nav ul li a:hover{
     color: white;
     font-style: italic;
 }
+.flash-success{
+    margin-top: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 3%;
+    border: solid 2px rgb(0,255,0) ;
+    background-color: rgb(99,195,167);
+    color: white;
+    font-style: italic;
+}
 main{
     height: 100vh;
     min-height: 500px;
@@ -103,6 +113,7 @@ fieldset{
     margin-bottom: 3%;
 }
 .fieldset-champ input,select{
+    width: 50%;
     margin-bottom: 3%;
 }
 .fieldset-champ a{
@@ -115,10 +126,12 @@ fieldset{
     text-decoration: underline;
 }
 
+
 .form-profil{
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     padding: 3%;
+    width: 100%;
 }
 .form-profil img{
     width: 150px;

@@ -5,11 +5,14 @@ namespace App\Entity;
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
+ * @Vich\Uploadable
  * @UniqueEntity("pseudo")
  * @method string getUserIdentifier()
  */
@@ -74,9 +77,21 @@ class Utilisateur implements PasswordAuthenticatedUserInterface, UserInterface
     private $campus;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      */
-    private $photo;
+     private $photo;
+
+     /*
+    /**
+     * @Vich\UploadableField(mapping="photo_profil", fileNameProperty="photo")
+     * @var File
+     */
+    /*
+    private $photoFile;
+    */
+    private \DateTime $dateCreated;
+
 
     public function getId(): ?int
     {
@@ -142,19 +157,7 @@ class Utilisateur implements PasswordAuthenticatedUserInterface, UserInterface
 
         return $this;
     }
-/*
-    public function getMotPasse(): ?string
-    {
-        return $this->motPasse;
-    }
 
-    public function setMotPasse(string $motPasse): self
-    {
-        $this->motPasse = $motPasse;
-
-        return $this;
-    }
-*/
     public function getAdministrateur(): ?bool
     {
         return $this->administrateur;
@@ -222,6 +225,21 @@ class Utilisateur implements PasswordAuthenticatedUserInterface, UserInterface
         return $this;
     }
 
+    public function getPhotoFile()
+    {
+        return $this->photoFile;
+    }
+
+    public function setPhotoFile(File $photo=null)
+    {
+        $this->photoFile=$photo;
+
+        if ($photo){
+            $this->dateCreated=new \DateTime('now');
+        }
+
+    }
+
     /**
      * @see PasswordAuthenticatedUserInterface
      */
@@ -247,7 +265,7 @@ class Utilisateur implements PasswordAuthenticatedUserInterface, UserInterface
         return null;
     }
 
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->pseudo;
     }
