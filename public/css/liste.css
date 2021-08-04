@@ -1,0 +1,38 @@
+.box-droite{
+    display: block;
+    text-align: right;
+    margin: 3%;
+}
+
+.box-gauche{
+    display: block;
+    margin: 3%;
+}
+
+
+.table-box {
+    display: block;
+    transform: translateX(10%);
+    width: 80%;
+    height: 200px;
+    margin: 3%;
+}
+table{
+    width: 100%;
+}
+tbody{
+    overflow-y: scroll;
+}
+table, th, td {
+    padding: 10px;
+    border: 1px solid #AAAAAA;
+    border-collapse: collapse;
+    text-align: left;
+}
+th {
+    position: sticky;
+    top: 0;
+    background: rgba(82,117,139,0.76);
+    color: whitesmoke;
+    box-sizing: border-box;
+}

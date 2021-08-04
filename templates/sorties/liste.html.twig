@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/liste.css') }}">{% endblock %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="box-droite">
+        <h5>Date du jour : {{ "now" | date('d/m/Y') }}</h5>
+        <h5>Participant : {{ app.user.pseudo }}</h5>
+    </div>
+    <div class="box-gauche">
+        <h5>Filtrer les sorties :</h5>
+
+    </div>
+    <div class="table-box">
+        <table class="tableau-style">
+            <thead>
+                <tr>
+                    <th class="col">Nom de la sortie</th>
+                    <th class="col">Date de la sortie</th>
+                    <th class="col">Clôture</th>
+                    <th class="col">Inscrits / Places</th>
+                    <th class="col">Etat</th>
+                    <th class="col">Inscrit</th>
+                    <th class="col">Organisateur</th>
+                    <th class="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for s in sorties %}
+                <tr>
+                    <td class="col">{{ s.name }}</td>
+                    <td class="col">{{ s.dateHeureDebut }}</td>
+                    <td class="col">{{ s.dateLimiteInscription }}</td>
+                    <td class="col">{{ s.participants.lenght }}/{{ s.nbreInscriptionMax }}</td>
+                    <td class="col">{{ etat.libelle }}</td>
+
+                    <td class="col">{% for p in s.participants %}
+                                        {% if p == app.user %}
+                                            X
+                                        {% endif %}
+                                    {% endfor %}
+                    </td>
+
+                    <td class="col">{{ orga.pseudo }}</td>
+                    <td class="col"><a href="detail.html.twig">Afficher</a></td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+
+

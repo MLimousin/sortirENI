@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail sortie{% endblock %}
+
+{% block body %}
+    <h1>Détail de la sortie</h1>
+    <fieldset>
+        <div class="fieldset-champ">
+            <h5>Nom de la sortie : </h5>
+            <p>{{ sortie.name }}</p>
+        </div>
+        <div class="fieldset-champ">
+            <h5>Date et heure de la sortie : </h5>
+            <p>Le {{ sortie.dateHeureDebut.format("d/m/Y") }} à {{ sortie.dateHeureDebut.format("H:i") }}</p>
+        </div>
+        <div class="fieldset-champ">
+            <h5>Date limite d'inscription : </h5>
+            <p>{{ sortie.dateLimiteInscription.format("d/m/Y") }}</p>
+        </div>
+        <div class="fieldset-champ">
+            <h5>Nombre de places : </h5>
+            <p>{{ sortie.nbreInscriptionMax }}</p>
+        </div>
+        <div class="fieldset-champ">
+            <h5>Durée de la sortie : </h5>
+            <p>{{ sortie.duree }} minutes</p>
+        </div>
+        <div class="fieldset-champ">
+            <h5>Description et infos : </h5>
+            <p>{{ sortie.infosSortie }}</p>
+        </div>
+        <div class="fieldset-champ">
+            <h5>Campus : </h5>
+            <p>{{ campus.name }}</p>
+        </div>
+        <div class="fieldset-champ">
+            <h5>Lieu : </h5>
+            <p>{{ lieu.nom }}</p>
+        </div>
+        <div class="fieldset-champ">
+            <h5>Rue : </h5>
+            <p>{{ lieu.rue }}</p>
+        </div>
+        <div class="fieldset-champ">
+            <h5>Ville : </h5>
+            <p>{{ ville.nom }} ({{ ville.codePostal }}) </p>
+        </div>
+        <div class="fieldset-champ">
+            <h5>Latitude : </h5>
+            <p>{{ lieu.latitude }}</p>
+        </div>
+        <div class="fieldset-champ">
+            <h5>Longitude : </h5>
+            <p>{{ lieu.longitude }}</p>
+        </div>
+    </fieldset>
+    <h3>Liste des participants inscrits :</h3>
+    <table>
+        {% if participants %}
+            <thead>
+                <td>Pseudo</td>
+                <td>Nom</td>
+            </thead>
+            {% for {{ p in participants }} %}
+                <tr>
+                    <td>{{ participants.pseudo }}</td>
+                    <td>{{ participants.prenom }} {{ participants.nom }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <p>Aucun participant pour le moment...</p>
+        {% endif %}
+    </table>
+{% endblock %}
