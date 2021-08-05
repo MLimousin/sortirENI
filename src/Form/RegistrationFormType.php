@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Campus;
 use App\Entity\Utilisateur;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -53,14 +55,16 @@ class RegistrationFormType extends AbstractType
                 ],
                 'label' => 'Mot de Passe :'
             ])
-            ->add('campus', ChoiceType::class, [
+            ->add('campus', EntityType::class, [
+                'class' => Campus::class,
                 'label' => 'Campus : ',
-                'choices' => array(
-                    //'TOUS' => 'TOUS',
-                    'NIORT'=>'NIORT',
-                    'RENNES'=>'RENNES',
-                    'SAINT HERBLAIN'=>'SAINT HERBLAIN'
-                )
+                'choice_label' => 'name',
+                'choice_value' => function (?Campus $campus) {
+                    return $campus ? $campus->getId() : '';
+                },
+
+
+
             ])
             ->add('photoFile', FileType::class, [
                 'label' => 'Ma photo : ',

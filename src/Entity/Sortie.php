@@ -50,25 +50,40 @@ class Sortie
     private $infosSortie;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="sorties")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $campus;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Etat::class, inversedBy="sorties")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $etat;
 
     /**
-     * @ORM\OneToMany(targetEntity=Etat::class, mappedBy="sortie")
+     * @ORM\ManyToOne(targetEntity=Utilisateur::class, inversedBy="sortiesOrganisees")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $Etat;
+    private $organisateur;
 
     /**
-     * @ORM\OneToMany(targetEntity=Campus::class, mappedBy="sortie")
+     * @ORM\ManyToMany(targetEntity=Utilisateur::class, inversedBy="sortiesInscrit")
      */
-    private $Campus;
+    private $participants;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="sorties")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $lieu;
 
     public function __construct()
     {
-        $this->Etat = new ArrayCollection();
-        $this->Campus = new ArrayCollection();
+        $this->participants = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {
@@ -147,39 +162,6 @@ class Sortie
         return $this;
     }
 
-    public function getEtat(): ?string
-    {
-        return $this->etat;
-    }
-
-    public function setEtat(string $etat): self
-    {
-        $this->etat = $etat;
-
-        return $this;
-    }
-
-    public function addEtat(Etat $etat): self
-    {
-        if (!$this->Etat->contains($etat)) {
-            $this->Etat[] = $etat;
-            $etat->setSortie($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEtat(Etat $etat): self
-    {
-        if ($this->Etat->removeElement($etat)) {
-            // set the owning side to null (unless already changed)
-            if ($etat->getSortie() === $this) {
-                $etat->setSortie(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|Campus[]
@@ -207,6 +189,73 @@ class Sortie
                 $campus->setSortie(null);
             }
         }
+
+        return $this;
+    }
+
+    public function setCampus(?Campus $campus): self
+    {
+        $this->campus = $campus;
+
+        return $this;
+    }
+
+    public function getEtat(): ?Etat
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(?Etat $etat): self
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getOrganisateur(): ?Utilisateur
+    {
+        return $this->organisateur;
+    }
+
+    public function setOrganisateur(?Utilisateur $organisateur): self
+    {
+        $this->organisateur = $organisateur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Utilisateur[]
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(Utilisateur $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Utilisateur $participant): self
+    {
+        $this->participants->removeElement($participant);
+
+        return $this;
+    }
+
+    public function getLieu(): ?Lieu
+    {
+        return $this->lieu;
+    }
+
+    public function setLieu(?Lieu $lieu): self
+    {
+        $this->lieu = $lieu;
 
         return $this;
     }
