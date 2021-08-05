@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
-use App\Entity\Campus;
 use App\Entity\Lieu;
 use App\Entity\Sortie;
 use App\Entity\Utilisateur;
 use App\Entity\Ville;
 use App\Form\CreationSortieType;
+use App\Repository\CampusRepository;
+use App\Repository\LieuRepository;
+use App\Repository\SortieRepository;
 use App\Repository\UtilisateurRepository;
 use App\Repository\VilleRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,17 +20,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use function PHPUnit\Framework\returnArgument;
 
 class SortiesController extends AbstractController
-
-
-    #[Route('/create_sortie', name: 'sortie_create')]
-
-    public function create(Request $request,
-                           UtilisateurRepository $utilisateurRepository,
-    }
-
-    #[Route('/sorties/liste', name: 'sortie_liste')]
-
-    public function liste(SortieRepository $sortieRepository): Response
+{
+    #[Route('/sorties/liste', name:'sortie_liste')]
+        public function liste(SortieRepository $sortieRepository): Response
     {
         /*
         $sortiesFiltrees = new SortieFiltre();
@@ -71,8 +65,10 @@ class SortiesController extends AbstractController
 
 
 
-    #[Route('/create', name: 'app_creation')]
-                            EntityManagerInterface $entityManager
+    #[Route('/create_sortie', name: 'sortie_create')]
+    public function create(Request $request,
+                           UtilisateurRepository $utilisateurRepository,
+                           EntityManagerInterface $entityManager
     ): Response {
         $sortie = new Sortie();
         $user = $this->getUser();
@@ -85,8 +81,9 @@ class SortiesController extends AbstractController
         }
         $repositoryVille = $this->getDoctrine()->getRepository(Ville::class);
         $repositoryLieu = $this->getDoctrine()->getRepository(Lieu::class);
-        $villes = $repositoryVille->findAll();
         $lieux = $repositoryLieu->findAll();
+        $villes = $repositoryVille->findAll();
+
 
         $creationSortieForm = $this->createForm(CreationSortieType::class, $sortie);
 

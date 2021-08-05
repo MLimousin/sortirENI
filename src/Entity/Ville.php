@@ -23,10 +23,6 @@ class Ville
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nom;
 
     /**
      * @ORM\Column(type="integer")
