@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Etat;
 use App\Entity\Lieu;
 use App\Entity\Sortie;
 use App\Entity\Utilisateur;
@@ -9,6 +10,7 @@ use App\Entity\Ville;
 use App\Form\CreationSortieType;
 use App\Repository\CampusRepository;
 use App\Repository\LieuRepository;
+use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
 use App\Repository\UtilisateurRepository;
 use App\Repository\VilleRepository;
@@ -81,18 +83,21 @@ class SortiesController extends AbstractController
         }
         $repositoryVille = $this->getDoctrine()->getRepository(Ville::class);
         $repositoryLieu = $this->getDoctrine()->getRepository(Lieu::class);
-        $lieux = $repositoryLieu->findAll();
         $villes = $repositoryVille->findAll();
+        $lieux = $repositoryLieu->findBy(['ville'=>$request->request->get('ville')]);
 
-
+        $sortie->setOrganisateur($this->getUser());
         $creationSortieForm = $this->createForm(CreationSortieType::class, $sortie);
 
         $creationSortieForm -> handleRequest($request);
-        if ($creationSortieForm->isSubmitted()){
+        if ($creationSortieForm->isSubmitted() && $creationSortieForm->isValid()){
+            $repositoryEtat = $this->getDoctrine()->getRepository(Etat::class);
+            $etat = $repositoryEtat->findOneBy(['libelle'=>'Créée']);
+            $sortie->setEtat($etat);
             $entityManager->persist($sortie);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Sortie ajoutée');
+            $this->addFlash('success', 'Sortie ajoutée !');
 
         }
 
