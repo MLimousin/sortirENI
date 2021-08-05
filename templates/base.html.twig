@@ -18,7 +18,7 @@
             <nav>
                 <ul>
                     {% if app.user %}
-                        <li><a href="{{ path('app_Sorties') }}">Accueil</a></li>
+                        <li><a href="{{ path('sortie_liste') }}">Accueil</a></li>
                         <li><a href="{{ path('utilisateur_profil') }}">Mon profil</a></li>
                         <li><a href="{{ path('app_logout') }}">Se déconnecter ({{ app.user.pseudo }})</a></li>
                     {% endif %}
