@@ -9,67 +9,66 @@
         <fieldset class="fieldset-sortie">
             {{ form_start(creationSortieForm) }}
             <div class="colonne">
-
-            <div class="fieldset-champ">
-                {{ form_label(creationSortieForm.name) }}
-                {{ form_widget(creationSortieForm.name) }}
-            </div>
-            <div class="fieldset-champ">
-                {{ form_label(creationSortieForm.dateHeureDebut) }}
-                {{ form_widget(creationSortieForm.dateHeureDebut) }}
-            </div>
-            <div class="fieldset-champ">
-                {{ form_label(creationSortieForm.dateLimiteInscription) }}
-                {{ form_widget(creationSortieForm.dateLimiteInscription) }}
-            </div>
-            <div class="fieldset-champ">
-                {{ form_label(creationSortieForm.nbreInscriptionMax) }}
-                {{ form_widget(creationSortieForm.nbreInscriptionMax) }}
-            </div>
-            <div class="fieldset-champ">
-                {{ form_label(creationSortieForm.duree) }}
-                {{ form_widget(creationSortieForm.duree) }}
-            </div>
-            <div class="fieldset-champ">
-                {{ form_label(creationSortieForm.infosSortie) }}
-                {{ form_widget(creationSortieForm.infosSortie) }}
-            </div>
+                <div class="fieldset-champ">
+                    {{ form_label(creationSortieForm.name) }}
+                    {{ form_widget(creationSortieForm.name) }}
+                </div>
+                <div class="fieldset-champ">
+                    {{ form_label(creationSortieForm.dateHeureDebut) }}
+                    {{ form_widget(creationSortieForm.dateHeureDebut) }}
+                </div>
+                <div class="fieldset-champ">
+                    {{ form_label(creationSortieForm.dateLimiteInscription) }}
+                    {{ form_widget(creationSortieForm.dateLimiteInscription) }}
+                </div>
+                <div class="fieldset-champ">
+                    {{ form_label(creationSortieForm.nbreInscriptionMax) }}
+                    {{ form_widget(creationSortieForm.nbreInscriptionMax) }}
+                </div>
+                <div class="fieldset-champ">
+                    {{ form_label(creationSortieForm.duree) }}
+                    {{ form_widget(creationSortieForm.duree) }}
+                </div>
+                <div class="fieldset-champ">
+                    {{ form_label(creationSortieForm.infosSortie) }}
+                    {{ form_widget(creationSortieForm.infosSortie) }}
+                </div>
             </div>
             <div class="colonne">
-            <div class="fieldset-champ">
-                {{ form_label(creationSortieForm.campus) }}
-                {{ form_widget(creationSortieForm.campus) }}
-            </div>
-            <div class="fieldset-champ">
-                {{ form_label(creationSortieForm.ville) }}
-                {{ form_widget(creationSortieForm.ville) }}
-            </div>
-            <div class="fieldset-champ">
-                {{ form_label(creationSortieForm.lieu) }}
-                {{ form_widget(creationSortieForm.lieu) }}
-            </div>
-            <div class="fieldset-champ">
-                {{ form_label(creationSortieForm.rue) }}
-                {{ form_widget(creationSortieForm.rue) }}
-            </div>
-            <div class="fieldset-champ">
-                {{ form_label(creationSortieForm.codePostal) }}
-                {{ form_widget(creationSortieForm.codePostal) }}
-            </div>
-            <div class="fieldset-champ">
-                {{ form_label(creationSortieForm.latitude) }}
-                {{ form_widget(creationSortieForm.latitude) }}
-            </div>
-            <div class="fieldset-champ">
-                {{ form_label(creationSortieForm.longitude) }}
-                {{ form_widget(creationSortieForm.longitude) }}
-            </div>
+                <div class="fieldset-champ">
+                    {{ form_label(creationSortieForm.campus) }}
+                    {{ form_widget(creationSortieForm.campus) }}
+                </div>
+                <div class="fieldset-champ">
+                    {{ form_label(creationSortieForm.ville) }}
+                    {{ form_widget(creationSortieForm.ville) }}
+                </div>
+                <div class="fieldset-champ">
+                    {{ form_label(creationSortieForm.lieu) }}
+                    {{ form_widget(creationSortieForm.lieu) }}
+                </div>
+                <div class="fieldset-champ">
+                    {{ form_label(creationSortieForm.rue) }}
+                    {{ form_widget(creationSortieForm.rue) }}
+                </div>
+                <div class="fieldset-champ">
+                    {{ form_label(creationSortieForm.codePostal) }}
+                    {{ form_widget(creationSortieForm.codePostal) }}
+                </div>
+                <div class="fieldset-champ">
+                    {{ form_label(creationSortieForm.latitude) }}
+                    {{ form_widget(creationSortieForm.latitude) }}
+                </div>
+                <div class="fieldset-champ">
+                    {{ form_label(creationSortieForm.longitude) }}
+                    {{ form_widget(creationSortieForm.longitude) }}
+                </div>
             </div>
             <div class="fieldset-champ">
                 <button type="submit">Enregistrer</button>
                 <button type="submit">Publier la sortie</button>
                 <button type="reset">Annuler</button>
-                <a href="{{ path('app_login') }}">Retour</a>
+                <a href="{{ path('sortie_liste') }}">Retour</a>
             </div>
 
             {{ form_end(creationSortieForm) }}

@@ -46,23 +46,24 @@ class SortiesController extends AbstractController
 
     public function detailSortie($id,
                                  SortieRepository $sortieRepository,
-                                 UtilisateurRepository $utilisateurRepository,
+                                 /*UtilisateurRepository $utilisateurRepository,
                                  CampusRepository $campusRepository,
                                  LieuRepository $lieuRepository,
-                                 VilleRepository $villeRepository) : Response
+                                 VilleRepository $villeRepository*/) : Response
     {
         $sortie = $sortieRepository->find($id);
+        /*
         $participants = $utilisateurRepository->find($sortie->getParticipants());
         $campus = $campusRepository->find($sortie->getCampus());
         $lieu = $lieuRepository->find($sortie->getLieu());
         $ville = $villeRepository->find($lieu->getVille());
-
+        */
         return $this->render('sorties/detail.html.twig',
-                            ["sortie"=>$sortie,
-                             "participants"=>$participants,
+                            ["sortie"=>$sortie
+                             /*participants"=>$participants,
                              "campus"=>$campus,
                              "lieu"=>$lieu,
-                             "ville"=>$ville]);
+                             "ville"=>$ville*/]);
     }
 
 
