@@ -19,13 +19,14 @@ class Ville
      */
     private $id;
 
-
     /**
      * @ORM\Column(type="string", length=255)
      */
-
     private $nom;
-
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom;
 
     /**
      * @ORM\Column(type="integer")
@@ -74,7 +75,10 @@ class Ville
     /**
      * @return Collection|Lieu[]
      */
-
+    public function getLieux(): Collection
+    {
+        return $this->lieux;
+    }
     public function addLieux(Lieu $lieux): self
     {
         if (!$this->lieux->contains($lieux)) {
@@ -84,15 +88,12 @@ class Ville
 
         return $this;
     }
-
-
     public function removeLieux(Lieu $lieux): self
     {
         if ($this->lieux->removeElement($lieux)) {
             // set the owning side to null (unless already changed)
             if ($lieux->getVille() === $this) {
                 $lieux->setVille(null);
-
             }
         }
 

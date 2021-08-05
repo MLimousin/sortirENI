@@ -30,22 +30,23 @@ class Lieu
     private $rue;
 
     /**
-     * @ORM\Column(type="float", nullable=false)
+     * @ORM\Column(type="float")
      */
     private $latitude;
 
     /**
-     * @ORM\Column(type="float", nullable=false)
+     * @ORM\Column(type="float")
      */
     private $longitude;
 
     /**
-     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="lieu")
+     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="lieu", orphanRemoval=true)
      */
     private $sorties;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Ville::class, inversedBy="lieu")
+     * @ORM\ManyToOne(targetEntity=Ville::class, inversedBy="lieux")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $ville;
 
@@ -82,7 +83,7 @@ class Lieu
         return $this;
     }
 
-    public function getLatitude(): float
+    public function getLatitude(): ?float
     {
         return $this->latitude;
     }
@@ -93,8 +94,7 @@ class Lieu
 
         return $this;
     }
-
-    public function getLongitude(): float
+    public function getLongitude(): ?float
     {
         return $this->longitude;
     }
