@@ -6,9 +6,10 @@
 {% block body%}
     {# Créer le titre de la page #}
     <h1>Nouvelle Sortie</h1>
-        <fieldset>
+        <fieldset class="fieldset-sortie">
             {{ form_start(creationSortieForm) }}
-            <div>
+            <div class="colonne">
+
             <div class="fieldset-champ">
                 {{ form_label(creationSortieForm.name) }}
                 {{ form_widget(creationSortieForm.name) }}
@@ -34,7 +35,7 @@
                 {{ form_widget(creationSortieForm.infosSortie) }}
             </div>
             </div>
-            <div>
+            <div class="colonne">
             <div class="fieldset-champ">
                 {{ form_label(creationSortieForm.campus) }}
                 {{ form_widget(creationSortieForm.campus) }}
@@ -71,23 +72,7 @@
                 <a href="{{ path('app_login') }}">Retour</a>
             </div>
 
-
-
-
-
-
-
-
-
-
-
             {{ form_end(creationSortieForm) }}
         </fieldset>
-
-
-
-
-
-
 
 {% endblock %}
