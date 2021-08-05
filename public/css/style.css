@@ -90,8 +90,21 @@ button[type=submit]{
     background-color: rgb(99,195,167);
     border-radius: 8%;
     border: solid 1px;
+    margin-right: 5%;
 }
 button[type=submit]:hover{
+    background-color: rgb(254,195,101);
+    cursor: pointer;
+}
+button[type=reset]{
+    margin-top: 5%;
+    padding: 1%;
+    background-color: rgb(243,123,117);
+    border-radius: 8%;
+    border: solid 1px;
+    margin-right: 5%;
+}
+button[type=reset]:hover{
     background-color: rgb(254,195,101);
     cursor: pointer;
 }
@@ -104,6 +117,20 @@ fieldset{
     transform: translateY(50%);
     transform: translateX(100%);
     padding: 3%
+}
+.fieldset-sortie {
+    display: block;
+    position: absolute;
+    width: 60%;
+    top: 20%;
+    transform: translateX(20%);
+
+}
+.colonne {
+    display: inline-block;
+    width: 45%;
+    align-items: start;
+    margin: 2%;
 }
 .fieldset-champ{
     display: flex;

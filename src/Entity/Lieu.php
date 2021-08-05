@@ -59,7 +59,6 @@ class Lieu
     {
         return $this->id;
     }
-
     public function getNom(): ?string
     {
         return $this->nom;
@@ -95,7 +94,6 @@ class Lieu
 
         return $this;
     }
-
     public function getLongitude(): ?float
     {
         return $this->longitude;

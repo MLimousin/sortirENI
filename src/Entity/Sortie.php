@@ -171,8 +171,8 @@ class Sortie
 
     public function addCampus(Campus $campus): self
     {
-        if (!$this->Campus->contains($campus)) {
-            $this->Campus[] = $campus;
+        if (!$this->campus->contains($campus)) {
+            $this->campus[] = $campus;
             $campus->setSortie($this);
         }
 

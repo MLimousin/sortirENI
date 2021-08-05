@@ -75,7 +75,6 @@ class Ville
     {
         return $this->lieux;
     }
-
     public function addLieux(Lieu $lieux): self
     {
         if (!$this->lieux->contains($lieux)) {
@@ -85,7 +84,6 @@ class Ville
 
         return $this;
     }
-
     public function removeLieux(Lieu $lieux): self
     {
         if ($this->lieux->removeElement($lieux)) {
