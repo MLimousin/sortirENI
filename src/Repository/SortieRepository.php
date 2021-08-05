@@ -27,11 +27,12 @@ class SortieRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('s');
 
         $queryBuilder -> join('s.campus','camp') -> addSelect('camp');
+        /*
         $queryBuilder -> join('s.lieu','lieu') -> addSelect('lieu');
         $queryBuilder -> join('s.participants','part') -> addSelect('part');
         $queryBuilder -> join('s.etat','etat') -> addSelect('etat');
         $queryBuilder -> join('s.organisateur','orga') -> addSelect('orga');
-
+        */
         $queryBuilder ->addOrderBy('s.dateHeureDebut','DESC');
 
         $query = $queryBuilder -> getQuery();

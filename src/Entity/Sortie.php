@@ -163,12 +163,10 @@ class Sortie
     }
 
 
-    /**
-     * @return Collection|Campus[]
-     */
-    public function getCampus(): Collection
+
+    public function getCampus(): ?Campus
     {
-        return $this->Campus;
+        return $this->campus;
     }
 
     public function addCampus(Campus $campus): self
@@ -193,7 +191,7 @@ class Sortie
         return $this;
     }
 
-    public function setCampus(?Campus $campus): self
+    public function setCampus(Campus $campus): self
     {
         $this->campus = $campus;
 
